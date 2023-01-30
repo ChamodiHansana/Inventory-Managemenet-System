@@ -1,40 +1,65 @@
 <div class="d-flex align-items-center justify-content-center">
-    <div class="col-md-6 grid-margin stretch-card">
-        <div class="card">
-          <div class="card-body">
-            <h4 class="card-title">Default form</h4>
-            <p class="card-description">
-              Basic form layout
-            </p>
-            <form class="forms-sample">
-              <div class="form-group">
-                <label for="exampleInputUsername1">Username</label>
-                <input type="text" class="form-control" id="exampleInputUsername1" placeholder="Username">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputEmail1">Email address</label>
-                <input type="email" class="form-control" id="exampleInputEmail1" placeholder="Email">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputPassword1">Password</label>
-                <input type="password" class="form-control" id="exampleInputPassword1" placeholder="Password">
-              </div>
-              <div class="form-group">
-                <label for="exampleInputConfirmPassword1">Confirm Password</label>
-                <input type="password" class="form-control" id="exampleInputConfirmPassword1" placeholder="Password">
-              </div>
-              <div class="form-check form-check-flat form-check-primary">
+   
+  <div class="col-md-9 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title">Create Product</h4>
+        <form class="forms-sample">
+          <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Product Name</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="exampleInputUsername2" >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Description</label>
+            <div class="col-sm-9">
+              <textarea class="form-control" id="exampleInputUsername2" ></textarea>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Select Category</label>
+            <div class="col-sm-9">
+              <select class="form-control" aria-label="Default select example">
+                <option selected>Root</option>
+                <option value="1">One</option>
+                <option value="2">Two</option>
+                <option value="3">Three</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Sale Price</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="exampleInputUsername2" >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Cost Price</label>
+            <div class="col-sm-9">
+              <input type="text" class="form-control" id="exampleInputUsername2" >
+            </div>
+          </div>
+
+          <div class="form-group row">
+            <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Status</label>
+            <div class="col-sm-9">
+              <div class="form-check">
                 <label class="form-check-label">
-                  <input type="checkbox" class="form-check-input">
-                  Remember me
+                  <input type="checkbox" class="form-check-input" checked>
+                  Active
                 </label>
               </div>
-              <button type="submit" class="btn btn-primary mr-2">Submit</button>
-              <button class="btn btn-light">Cancel</button>
-            </form>
-          </div>
+            </div>
         </div>
+       
+          <button type="submit" class="btn btn-primary mr-2">Submit</button>
+          <button class="btn btn-light">Cancel</button>
+        </form>
       </div>
+    </div>
+  </div>
     
 </div>
-

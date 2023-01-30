@@ -22,74 +22,42 @@
           </li>
         </ul>
         <ul class="navbar-nav navbar-nav-right">
-          <li class="nav-item dropdown">
-            <a class="nav-link count-indicator dropdown-toggle" id="notificationDropdown" href="#" data-toggle="dropdown">
-              <i class="icon-bell mx-0"></i>
-              <span class="count"></span>
+
+          <li *ngIf="showLogin" class="nav-item nav-profile dropdown">
+            <a class="nav-link"  routerLink="/login-user" >
+              Login
             </a>
-            <div class="dropdown-menu dropdown-menu-right navbar-dropdown preview-list" aria-labelledby="notificationDropdown">
-              <p class="mb-0 font-weight-normal float-left dropdown-header">Notifications</p>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-success">
-                    <i class="ti-info-alt mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Application Error</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Just now
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-warning">
-                    <i class="ti-settings mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">Settings</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    Private message
-                  </p>
-                </div>
-              </a>
-              <a class="dropdown-item preview-item">
-                <div class="preview-thumbnail">
-                  <div class="preview-icon bg-info">
-                    <i class="ti-user mx-0"></i>
-                  </div>
-                </div>
-                <div class="preview-item-content">
-                  <h6 class="preview-subject font-weight-normal">New user registration</h6>
-                  <p class="font-weight-light small-text mb-0 text-muted">
-                    2 days ago
-                  </p>
-                </div>
-              </a>
-            </div>
           </li>
-          <li class="nav-item nav-profile dropdown">
+
+          <li *ngIf="showRegister" class="nav-item nav-profile dropdown">
+            <a class="nav-link"  routerLink="/register-user" >
+              Register
+            </a>
+          </li>
+
+          <li *ngIf="showSettings" class="nav-item nav-profile dropdown">
             <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" id="profileDropdown">
               <img src="/assets/images/faces/face28.jpg" alt="profile"/>
             </a>
             <div class="dropdown-menu dropdown-menu-right navbar-dropdown" aria-labelledby="profileDropdown">
-              <a class="dropdown-item">
-                <i class="ti-settings text-primary"></i>
-                Settings
+              <a  class="dropdown-item">
+                <div *ngIf="userDetails">
+                  <ul class="list-group">
+                    <li class="list-group-item"><strong>Username : </strong>{{userDetails.userName}}</li>
+                    <li class="list-group-item"><strong>FullName : </strong>{{userDetails.fullName}}</li>
+                    <li class="list-group-item"><strong>Email : </strong>{{userDetails.email}}</li>
+                  </ul>
+                </div>
               </a>
-              <a class="dropdown-item">
+              <a (click)="onLogout()" class="dropdown-item">
                 <i class="ti-power-off text-primary"></i>
                 Logout
               </a>
+             
+             
             </div>
           </li>
-          <li class="nav-item nav-settings d-none d-lg-flex">
-            <a class="nav-link" href="#">
-              <i class="icon-ellipsis"></i>
-            </a>
-          </li>
+          
         </ul>
         <button class="navbar-toggler navbar-toggler-right d-lg-none align-self-center" type="button" data-toggle="offcanvas">
           <span class="icon-menu"></span>
@@ -99,24 +67,7 @@
     <!-- partial -->
     <div class="container-fluid page-body-wrapper">
       <!-- partial:partials/_settings-panel.html -->
-      <div class="theme-setting-wrapper">
-        <div id="settings-trigger"><i class="ti-settings"></i></div>
-        <div id="theme-settings" class="settings-panel">
-          <i class="settings-close ti-close"></i>
-          <p class="settings-heading">SIDEBAR SKINS</p>
-          <div class="sidebar-bg-options selected" id="sidebar-light-theme"><div class="img-ss rounded-circle bg-light border mr-3"></div>Light</div>
-          <div class="sidebar-bg-options" id="sidebar-dark-theme"><div class="img-ss rounded-circle bg-dark border mr-3"></div>Dark</div>
-          <p class="settings-heading mt-2">HEADER SKINS</p>
-          <div class="color-tiles mx-0 px-4">
-            <div class="tiles success"></div>
-            <div class="tiles warning"></div>
-            <div class="tiles danger"></div>
-            <div class="tiles info"></div>
-            <div class="tiles dark"></div>
-            <div class="tiles default"></div>
-          </div>
-        </div>
-      </div>
+ 
       <div id="right-sidebar" class="settings-panel">
         <i class="settings-close ti-close"></i>
         <ul class="nav nav-tabs border-top" id="setting-panel" role="tablist">
@@ -272,7 +223,7 @@
       <nav class="sidebar sidebar-offcanvas" id="sidebar">
         <ul class="nav">
           <li class="nav-item">
-            <a class="nav-link" href="index.html">
+            <a class="nav-link" routerLink="/summary">
               <i class="icon-grid menu-icon"></i>
               <span class="menu-title">Dashboard</span>
             </a>
@@ -285,7 +236,7 @@
             </a>
             <div class="collapse" id="ui-basic">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link"  routerLink="/create-category" >Create category</a></li>
+                <li class="nav-item"> <a class="nav-link"  routerLink="/add-update-category" >Create category</a></li>
                 <li class="nav-item"> <a class="nav-link" routerLink="/manage-category" href="#">Manage category</a></li>
               </ul>
             </div>
@@ -298,8 +249,8 @@
             </a>
             <div class="collapse" id="form-elements">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"><a class="nav-link" href="#">Create product</a></li>
-                <li class="nav-item"><a class="nav-link" href="#">Manage product</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/create-product">Create product</a></li>
+                <li class="nav-item"><a class="nav-link" routerLink="/manage-product">Manage product</a></li>
             </ul>
             </div>
           </li>
@@ -311,8 +262,8 @@
             </a>
             <div class="collapse" id="charts">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">Create supplier</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Manage supplier</a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/create-supplier">Create supplier</a></li>
+                <li class="nav-item"> <a class="nav-link"  routerLink="/manage-supplier">Manage supplier</a></li>
               </ul>
             </div>
           </li>
@@ -324,8 +275,8 @@
             </a>
             <div class="collapse" id="tables">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">New Purchase</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Manage Purchase</a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/create-purchase">New Purchase</a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/manage-purchase">Manage Purchase</a></li>
               </ul>
             </div>
           </li>
@@ -337,8 +288,8 @@
             </a>
             <div class="collapse" id="icons">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#">Create Customer</a></li>
-                <li class="nav-item"> <a class="nav-link" href="#">Manage Customer</a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/create-customer">Create Customer</a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/manage-customer">Manage Customer</a></li>
               </ul>
             </div>
           </li>
@@ -350,8 +301,8 @@
             </a>
             <div class="collapse" id="auth">
               <ul class="nav flex-column sub-menu">
-                <li class="nav-item"> <a class="nav-link" href="#"> New order </a></li>
-                <li class="nav-item"> <a class="nav-link" href="#"> Manage order </a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/create-order"> New order </a></li>
+                <li class="nav-item"> <a class="nav-link" routerLink="/manage-order"> Manage order </a></li>
               </ul>
             </div>
           </li>
