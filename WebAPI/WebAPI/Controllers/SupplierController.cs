@@ -27,7 +27,7 @@ namespace InventoryWebAPI.Controllers
         {
             string query = @"select SupplierId, SupplierName ,Address,Phone from Supplier";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -35,7 +35,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -53,7 +53,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" insert into Supplier values 
                     ('" + sup.SupplierName + @"','" + sup.Address + @"','" + sup.Phone + @"')";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -61,7 +61,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -81,7 +81,7 @@ namespace InventoryWebAPI.Controllers
                     Phone = '" + sup.Phone + @"'
                     where SupplierId = " + sup.SupplierId + @" ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -106,7 +106,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" delete from Supplier
                     where SupplierId = " + id + @"  ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -114,7 +114,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();

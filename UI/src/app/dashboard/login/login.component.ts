@@ -21,25 +21,27 @@ export class LoginComponent {
   constructor(private service: SharedService, private router: Router, private dashboard: DashboardComponent) { }
 
 ngOnInit() {
-    if (localStorage.getItem('token') != null){
-      this.router.navigateByUrl('/summary');
-      this.dashboard.showLogin=false;
-      this.dashboard.showRegister=false;
-      this.dashboard.showSettings=true;
-    }
-    else{
-      this.dashboard.showLogin=true;
-      this.dashboard.showRegister=true;
-      this.dashboard.showSettings=false;
-    }
-     
+  if (localStorage.getItem('token') != null){
+    this.router.navigateByUrl('/summary');
+    this.dashboard.showLogin=false;
+    this.dashboard.showRegister=false;
+    this.dashboard.showSettings=true;
   }
+  else{
+    this.dashboard.showLogin=true;
+    this.dashboard.showRegister=true;
+    this.dashboard.showSettings=false;
+  }
+}
+     
+  
 
   onSubmit(form: NgForm) {
     this.service.loginUser(form.value).subscribe(
       (res: any) => {
         localStorage.setItem('token', res.token);
         this.router.navigateByUrl('/summary');
+        this.dashboard.userDetails();
       },
       err => {
         if (err.status == 400)

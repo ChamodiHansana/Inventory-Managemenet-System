@@ -44,3 +44,21 @@ F:\My projects\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\We
 F:\My projects\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.dll
 F:\My projects\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.pdb
 F:\My projects\JWT-Authentication-with-.Net-Core-Web-API-and-Angular-7-master\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.genruntimeconfig.cache
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\appsettings.Development.json
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\appsettings.json
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\WebAPI.deps.json
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\WebAPI.runtimeconfig.json
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\WebAPI.runtimeconfig.dev.json
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\WebAPI.dll
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\bin\Debug\netcoreapp2.2\WebAPI.pdb
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.csproj.AssemblyReference.cache
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.GeneratedMSBuildEditorConfig.editorconfig
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.AssemblyInfoInputs.cache
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.AssemblyInfo.cs
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.csproj.CoreCompileInputs.cache
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.RazorAssemblyInfo.cache
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.RazorAssemblyInfo.cs
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.RazorTargetAssemblyInfo.cache
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.dll
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.pdb
+F:\My projects\Angular+.NET core\Inventory-Managemenet-System\WebAPI\WebAPI\obj\Debug\netcoreapp2.2\WebAPI.genruntimeconfig.cache

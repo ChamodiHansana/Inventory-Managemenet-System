@@ -26,7 +26,7 @@ namespace InventoryWebAPI.Controllers
         {
             string query = @"select OrderId, CategoryName ,ProductName, CustomerName, Quantity,SalePrice, Date from Ordr";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -34,7 +34,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -50,11 +50,14 @@ namespace InventoryWebAPI.Controllers
         public JsonResult Post(Order order)
         {
             string query = @" insert into Ordr values 
-                    ('" + order.Date + @"','" + order.CategoryName + @"','" + order.ProductName + @"'
-                     '" + order.Quantity + @"','" + order.SalePrice + @"','" + order.CustomerName + @"',
-)";
+                    ('" + order.Date + @"',
+                     '" + order.CategoryName + @"',
+                     '" + order.ProductName + @"',
+                     '" + order.Quantity + @"',
+                     '" + order.SalePrice + @"',
+                     '" + order.CustomerName + @"')";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -62,7 +65,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -85,7 +88,7 @@ namespace InventoryWebAPI.Controllers
                     CustomerName = '" + order.CustomerName + @"'
                     where OrderId = " + order.OrderId + @" ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -93,7 +96,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -110,7 +113,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" delete from Ordr
                     where OrderId = " + id + @"  ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {

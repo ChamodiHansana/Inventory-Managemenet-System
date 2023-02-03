@@ -1,69 +1,161 @@
-<div class="d-flex align-items-center justify-content-center">
-   
-  <div class="col-lg-12 grid-margin stretch-card">
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title">Order List</h4>
-        <div class="table-responsive pt-3">
-          <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th>
-                  #
-                </th>
-                <th>
-                  Date
-                </th>
-                <th>
-                Customer
-                </th>
-                <th>
-                  Product
-                </th>
-                <th>
-                  Quantity
-                </th>
-                <th>
-                  Unit Price
-                </th>
-                <th>
-                  Total Price
-                </th>
-                <th>
-                  Action
-                </th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td>
-                  1
-                </td>
-                <td>
-                  Herman Beck
-                </td>
-                <td>
-                 Root
-                </td>
-                <td>1235</td>
-                <td>
-                  Root
-                 </td>
-                 <td>1235</td>
-                 <td>1235</td>
-                <td>
-                  <button type="button" class="btn btn-danger">Delete</button>
-                </td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
-      </div>
-    </div>
+<div class="float-right">
+  <!-- Button trigger modal -->
+  <button type="button" class="btn btn-primary" (click)="clickAdd()" data-toggle="modal" data-target="#exampleModal">
+   Create Order
+ </button>
   </div>
-
-
-</div>
-
-
  
+   
+ 
+ <div class="d-flex align-items-center justify-content-center mt-5">
+   <div class="col-lg-12 grid-margin stretch-card">
+     <div class="card">
+       <div class="card-body">
+         <h4 class="card-title">Order List</h4>
+         <div class="table-responsive pt-3">
+           <table class="table table-bordered">
+             <thead>
+               <tr>
+                 <th>
+                   #
+                 </th>
+                 <th>
+                   Date
+                 </th>
+                 <th>
+                   Product Name
+                </th>
+                <th>
+                  Categary Name
+               </th>
+                 <th>
+                 Qunatity
+                 </th>
+                 <th>
+                  Sale Price
+                 </th>
+                 <th>
+                   Customer Name
+                 </th>
+                 <th>
+                   Action
+                 </th>
+               </tr>
+             </thead>
+             <tbody>
+               <tr *ngFor="let dataItem of OrderList">
+                 <td>
+                   {{dataItem.orderId}}
+                 </td>
+                 <td>
+                   {{dataItem.date}}
+                 </td>
+                 <td>
+                   {{dataItem.productName}}
+                 </td>
+                 <td>
+                  {{dataItem.categoryName}}
+                </td>
+                 <td>
+                  {{dataItem.quantity}}
+                 </td>
+                 <td>
+                  {{dataItem.salePrice}}
+                 </td>
+                 <td>
+                  {{dataItem.customerName}}
+                 </td>
+                 <td>
+                   <button type="button" class="btn btn-info mr-1" data-toggle="modal" data-target="#exampleModal" (click)="clickEdit(dataItem)">Edit</button>
+                   <button type="button" class="btn btn-danger" (click)="deleteOrder(dataItem)">Delete</button>
+                 </td>
+               </tr>
+             </tbody>
+           </table>
+         </div>
+       </div>
+     </div>
+   </div>
+ 
+ 
+ </div>
+ 
+ <!-- Modal -->
+ <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+   <div class="modal-dialog" role="document">
+     <div class="modal-content">
+       <div class="modal-header">
+         <h5 class="modal-title" id="exampleModalLabel">Create Order</h5>
+         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+           <span aria-hidden="true">&times;</span>
+         </button>
+       </div>
+       <div class="modal-body">
+           <div class="col-md-12 grid-margin stretch-card">
+             <div class="card">
+               <div class="card-body">
+
+                  <div class="form-group row">
+                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Date</label>
+                     <div class="col-sm-12">
+                       <input type="text" [(ngModel)]="Date" class="form-control" id="exampleInputUsername2" >
+                     </div>
+                   </div>
+
+                <div class="form-group row">
+                  <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Categary</label>
+                  <div class="col-sm-12">
+                    <select  class="form-control" [(ngModel)]="CategoryName" aria-label="Default select example">
+                      <option *ngFor="let dataItem of CategoryList"  [value]="dataItem.categoryName" >{{dataItem.categoryName}}</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="form-group row">
+                 <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Product</label>
+                 <div class="col-sm-12">
+                   <select  class="form-control" [(ngModel)]="ProductName" aria-label="Default select example">
+                     <option *ngFor="let dataItem of ProductList"  [value]="dataItem.productName">{{dataItem.productName}}</option>
+                   </select>
+                 </div>
+               </div>
+
+                   <div class="form-group row">
+                     <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Quantity</label>
+                     <div class="col-sm-12">
+                       <input type="text" [(ngModel)]="Quantity" class="form-control" id="exampleInputUsername2" >
+                     </div>
+                   </div>
+                 
+                  <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Sale Price</label>
+                    <div class="col-sm-12">
+                      <input type="text" [(ngModel)]="SalePrice" class="form-control" id="exampleInputUsername2" >
+                    </div>
+                  </div>
+
+                  <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Customer Name</label>
+                    <div class="col-sm-12">
+                      <select  class="form-control" [(ngModel)]="CustomerName" aria-label="Default select example">
+                        <option *ngFor="let dataItem of CustomerList" [value]="dataItem.customerName" >{{dataItem.customerName}}</option>
+                      </select>
+                    </div>
+                  </div>
+                 
+                 
+
+         
+               </div>
+             </div>
+           </div>
+       </div>
+       <div class="modal-footer">
+         <button class="btn btn-primary mr-2" *ngIf="showAddBtn" (click)="addOrder()">Add</button>
+         <button class="btn btn-primary mr-2" *ngIf="showUpdateBtn" (click)="updateOrder()" >Update</button>
+         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+       </div>
+     </div>
+   </div>
+ </div>
+  

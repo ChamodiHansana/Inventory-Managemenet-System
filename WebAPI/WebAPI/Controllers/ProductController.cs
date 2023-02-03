@@ -26,7 +26,7 @@ namespace InventoryWebAPI.Controllers
         {
             string query = @"select ProductId, ProductName,ProductDesc, ProductCategory, CostPrice,SalePrice, Status from Product";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -34,7 +34,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -49,12 +49,16 @@ namespace InventoryWebAPI.Controllers
 
         public JsonResult Post(Product product)
         {
-            string query = @" insert into Product values 
-                    ('" + product.ProductName + @"','" + product.ProductDesc + @"','" + product.ProductCategory + @"'
-                     '" + product.CostPrice + @"','" + product.SalePrice + @"','" + product.Status + @"',
-)";
+          
+            string query = @"insert into Product values 
+                    ('" + product.ProductName + @"',
+                     '" + product.ProductDesc + @"',
+                     '" + product.ProductCategory + @"',
+                     '" + product.CostPrice + @"',
+                     '" + product.SalePrice + @"',
+                     '" + product.Status + @"')";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -62,7 +66,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -85,7 +89,7 @@ namespace InventoryWebAPI.Controllers
                     Status = '" + product.Status + @"'
                     where ProductId = " + product.ProductId + @" ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -93,7 +97,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -110,7 +114,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" delete from Product
                     where ProductId = " + id + @"  ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {

@@ -26,7 +26,7 @@ namespace InventoryWebAPI.Controllers
         {
             string query = @"select CustomerId, CustomerName ,Address,Phone from Customer";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -52,7 +52,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" insert into Customer values 
                     ('" + cus.CustomerName + @"','" + cus.Address + @"','" + cus.Phone + @"')";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -80,7 +80,7 @@ namespace InventoryWebAPI.Controllers
                     Phone = '" + cuz.Phone + @"'
                     where CustomerId = " + cuz.CustomerId + @" ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -105,7 +105,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" delete from Customer
                     where CustomerId = " + id + @"  ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {

@@ -15,16 +15,14 @@ export class SummaryComponent {
 
   ngOnInit() {
     if (localStorage.getItem('token') != null){
+      this.router.navigateByUrl('/summary');
       this.dashboard.showLogin=false;
       this.dashboard.showRegister=false;
       this.dashboard.showSettings=true;
     }
     else{
-      this.dashboard.showLogin=true;
-      this.dashboard.showRegister=true;
-      this.dashboard.showSettings=false;
+    
     }
-     
   }
 
 }

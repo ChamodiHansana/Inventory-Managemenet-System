@@ -26,7 +26,7 @@ namespace InventoryWebAPI.Controllers
         {
             string query = @"select PurchaseId, CategoryName ,ProductName, SupplierName, Quantity,CostPrice, Date from Purchase";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -34,7 +34,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -50,11 +50,14 @@ namespace InventoryWebAPI.Controllers
         public JsonResult Post(Purchase purchase)
         {
             string query = @" insert into Purchase values 
-                    ('" + purchase.Date + @"','" + purchase.CategoryName + @"','" + purchase.ProductName + @"'
-                     '" + purchase.Quantity + @"','" + purchase.CostPrice + @"','" + purchase.SupplierName + @"',
-)";
+                    ('" + purchase.Date + @"',
+                     '" + purchase.CategoryName + @"',
+                     '" + purchase.ProductName + @"',
+                     '" + purchase.Quantity + @"',
+                     '" + purchase.CostPrice + @"',
+                     '" + purchase.SupplierName + @"')";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -62,7 +65,7 @@ namespace InventoryWebAPI.Controllers
                 using (SqlCommand myCommand = new SqlCommand(query, myCon))
                 {
                     myReader = myCommand.ExecuteReader();
-                    table.Load(myReader); ;
+                    table.Load(myReader); 
 
                     myReader.Close();
                     myCon.Close();
@@ -81,11 +84,11 @@ namespace InventoryWebAPI.Controllers
                     CategoryName = '" + purchase.CategoryName + @"' ,
                     ProductName = '" + purchase.ProductName + @"' ,
                     Quantity = '" + purchase.Quantity + @"' ,
-                    SalePrice = '" + purchase.CostPrice + @"' ,
+                    CostPrice = '" + purchase.CostPrice + @"' ,
                     SupplierName = '" + purchase.SupplierName + @"'
                     where PurchaseId = " + purchase.PurchaseId + @" ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {
@@ -110,7 +113,7 @@ namespace InventoryWebAPI.Controllers
             string query = @" delete from Purchase
                     where PurchaseId = " + id + @"  ";
             DataTable table = new DataTable();
-            string sqlDataSource = _configuration.GetConnectionString("InventoryCon");
+            string sqlDataSource = _configuration.GetConnectionString("IdentityConnection");
             SqlDataReader myReader;
             using (SqlConnection myCon = new SqlConnection(sqlDataSource))
             {

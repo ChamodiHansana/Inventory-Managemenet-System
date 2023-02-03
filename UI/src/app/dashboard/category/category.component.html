@@ -1,5 +1,13 @@
-<div class="d-flex align-items-center justify-content-center">
-   
+ <div class="float-right">
+ <!-- Button trigger modal -->
+ <button type="button" class="btn btn-primary" (click)="clickAdd()" data-toggle="modal" data-target="#exampleModal">
+  Create Categary
+</button>
+ </div>
+
+  
+
+<div class="d-flex align-items-center justify-content-center mt-5">
   <div class="col-lg-12 grid-margin stretch-card">
     <div class="card">
       <div class="card-body">
@@ -28,17 +36,17 @@
             <tbody>
               <tr *ngFor="let dataItem of CategoryList">
                 <td>
-                  {{dataItem.CategoryId}}
+                  {{dataItem.categoryId}}
                 </td>
                 <td>
-                  {{dataItem.CategoryName}}
+                  {{dataItem.categoryName}}
                 </td>
                 <td>
-                  {{dataItem.Parent}}
+                  {{dataItem.parent}}
                 </td>
-                <td>{{dataItem.Status}}</td>
+                <td>{{dataItem.status}}</td>
                 <td>
-                  <button type="button" class="btn btn-info mr-1" (click)="clickEdit(dataItem)">Edit</button>
+                  <button type="button" class="btn btn-info mr-1" data-toggle="modal" data-target="#exampleModal" (click)="clickEdit(dataItem)">Edit</button>
                   <button type="button" class="btn btn-danger" (click)="deleteCategory(dataItem)">Delete</button>
                 </td>
               </tr>
@@ -52,5 +60,57 @@
 
 </div>
 
-
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Create Categary</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+          <div class="col-md-12 grid-margin stretch-card">
+            <div class="card">
+              <div class="card-body">
+                  <div class="form-group row">
+                    <label for="exampleInputUsername2" class="col-sm-3 col-form-label">Category Name</label>
+                    <div class="col-sm-12">
+                      <input type="text" [(ngModel)]="CategoryName" class="form-control" id="exampleInputUsername2" >
+                    </div>
+                  </div>
+                  <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Parent</label>
+                    <div class="col-sm-12">
+                      <select class="form-control" [(ngModel)]="Parent" aria-label="Default select example">
+                        <option selected>Root</option>
+                        <option >Sub</option>
+                      </select>
+                    </div>
+                  </div>
+        
+                  <div class="form-group row">
+                    <label for="exampleInputEmail2" class="col-sm-3 col-form-label">Status</label>
+                    <div class="col-sm-12">
+                      <div class="form-check">
+                        <label class="form-check-label">
+                          <input type="checkbox"  [(ngModel)]="Status" class="form-control" >
+                          Active
+                        </label>
+                      </div>
+                    </div>
+                </div>  
+              </div>
+            </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-primary mr-2" *ngIf="showAddBtn" (click)="addCategory()">Add</button>
+        <button class="btn btn-primary mr-2" *ngIf="showUpdateBtn" (click)="updateCategory()" >Update</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
  

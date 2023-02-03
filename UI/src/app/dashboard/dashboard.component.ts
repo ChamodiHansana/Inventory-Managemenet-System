@@ -26,25 +26,12 @@ showSettings :boolean=false;
       },
      
     );
-
-
-    if (localStorage.getItem('token') != null){
-      this.showLogin=false;
-      this.showRegister=false;
-      this.showSettings=true;
-    }
-    else{
-      this.showLogin=true;
-      this.showRegister=true;
-      this.showSettings=false;
-    }
-    
     }
 
   onLogout() {
     localStorage.removeItem('token');
     this.router.navigate(['/login-user']);
-}
+  }
 
 
 

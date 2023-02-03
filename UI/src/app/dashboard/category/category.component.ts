@@ -19,32 +19,81 @@ CategoryName: string | undefined;
 CategoryId: string| undefined;
 Status: string| undefined;
 Parent: string| undefined;
+showAddBtn :boolean=false;
+showUpdateBtn :boolean=false;
 
  ngOnInit(){
+  //this.CategoryId=this.category.categoryId;
+  //this.CategoryName=this.category.categoryName;
+  //this.Parent=this.category.parent;
+  //this.Status=this.category.status;
   this.refreshCategory();
  }
 
  refreshCategory(){
-  this.service.getCategoryLisr().subscribe(res=>{
+  this.service.getCategoryList().subscribe(res=>{
     this.CategoryList=res;
+    console.log(res);
   })
  }
 
 
 deleteCategory(item:any){
-  this.service.deleteCategory(item.CategoryId).subscribe(res=>{
+  this.service.deleteCategory(item.categoryId).subscribe(res=>{
     this.refreshCategory();
   })
 
 }
 
+clickAdd(){
+  this.showAddBtn=true;
+  this.showUpdateBtn=false;
+}
+
 
 clickEdit(item:any){
+  this.CategoryId=item.categoryId;
+  this.CategoryName=item.categoryName;
+  this.Parent=item.parent;
+  this.Status=item.status;
+  this.showAddBtn=false;
+  this.showUpdateBtn=true;
+}
 
-  //send data with  angular router
-  this.router.navigate(["/add-update-category", { 'data': JSON.stringify(item) }]);
-  console.log(item)
+addCategory(){
+  var val ={
+    categoryId:this.CategoryId, 
+    categoryName:this.CategoryName, 
+    parent:this.Parent,
+    status:this.Status};
 
+    this.service.addCategory(val).subscribe(res=>{
+         this.refreshCategory();
+    })
+
+    console.log(val);
+
+    this.CategoryName="";
+    this.Status="";
+    this.Parent="";
+ }
+
+ updateCategory(){
+  var val ={
+            categoryId:this.CategoryId, 
+            categoryName:this.CategoryName, 
+            parent:this.Parent,
+            status:this.Status};
+ console.log(val);
+  this.service.updateCategory(val).subscribe(res=>{
+    this.refreshCategory();
+  })
+
+  this.CategoryName="";
+  this.Status="";
+  this.Parent="";
 }
 
 }
+
+
